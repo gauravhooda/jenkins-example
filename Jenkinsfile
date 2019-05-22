@@ -5,7 +5,7 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
+                withMaven(maven : 'Maven') {
                     sh 'mvn clean compile'
                 }
             }
@@ -14,14 +14,14 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
+                withMaven(maven : 'Maven') {
                     sh 'mvn test'
                 }
             }
         }
 
 
-        stage ('Deployment Stage') {
+        /*stage ('Deployment Stage') {
             steps {
 
 		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'PCF_LOGIN',
@@ -30,6 +30,6 @@ usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
 sh '/usr/local/bin/cf login -a http://api.run.pivotal.io -u $USERNAME -p $PASSWORD'
  }
             }
-        }
+        }*/
     }
 }
